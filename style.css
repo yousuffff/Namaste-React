@@ -1,16 +1,16 @@
-*{
+* {
   /* margin: 0; */
   padding: 0;
   /* background-color: #272727; */
-  font-family:Verdana, Geneva, Tahoma, sans-serifĀ  b  ;
+  font-family: Verdana, Geneva, Tahoma, sans-serifĀ b;
 }
-h1{
+h1 {
   color: #bb0000;
 }
-h2{
+h2 {
   color: red;
 }
-.header{
+.header {
   padding: 0px 20px;
   background-color: rgb(32, 208, 228);
   display: flex;
@@ -18,47 +18,54 @@ h2{
   justify-content: space-between;
   border: 2px solid black;
 }
-.logo{
+.logo {
   height: 100px;
   width: 150px;
 }
 .navigation-link > ul {
-  
   display: flex;
 }
-.navigation-link > ul > li{
+.navigation-link > ul > li {
   font-size: 24px;
   padding: 15px;
   list-style: none;
 }
-.body{
+.body {
   background-color: #272727;
 }
-.search-container{
+.btn {
+  display: flex;
+  justify-content: end;
+  padding: 10px 10px 0 0;
+}
+.filter-btn {
+  padding: 10px;
+  cursor: pointer;
+}
+.search-container {
   padding: auto;
   margin-top: 20px;
 }
-.searchBar{
-  
-  border:  2px 0px 0px solid black;
+.searchBar {
+  border: 2px 0px 0px solid black;
   border-radius: 10px 0px 0px 10px;
   height: 30px;
   width: 400px;
 }
-.submitBtn{
+.submitBtn {
   border-left: 9px solid rgb(45, 45, 45);
   /* border: none; */
   border-radius: 0px 10px 10px 0px;
   height: 34px;
   width: 34px;
 }
-.res-container{
+.res-container {
   display: flex;
   /* margin: 10px; */
   /* gap: 10px; */
   flex-wrap: wrap;
 }
-.card{
+.card {
   border-radius: 20px;
   background-color: rgb(215, 198, 198);
   /* height: 400px; */
@@ -67,26 +74,26 @@ h2{
   width: 320px;
   border: 2px solid black;
 }
-.res-logo-container{
+.res-logo-container {
   margin: 5px;
   display: flex;
   justify-content: center;
 }
-.res-logo{
+.res-logo {
   height: 200px;
 }
-.res-info{
+.res-info {
   margin: 20px 0 0 10px;
 }
 .card > h2 {
   padding: 20px;
   color: blueviolet;
 }
-.userIcon{
+.userIcon {
   border-radius: 50%;
   display: flex;
   align-items: center;
-  justify-content:center;
+  justify-content: center;
   background-color: aliceblue;
   height: 34px;
   width: 34px;
