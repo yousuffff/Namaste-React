@@ -11,6 +11,7 @@ h2 {
   color: red;
 }
 .header {
+  height: 100px;
   padding: 0px 20px;
   background-color: rgb(32, 208, 228);
   display: flex;
@@ -19,8 +20,9 @@ h2 {
   border: 2px solid black;
 }
 .logo {
-  height: 100px;
+  height: 140px;
   width: 150px;
+  mix-blend-mode: multiply;
 }
 .navigation-link > ul {
   display: flex;
@@ -33,9 +35,10 @@ h2 {
 .body {
   background-color: #272727;
 }
-.btn {
+.body-header {
+  margin: 0px 25PX;
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   padding: 10px 10px 0 0;
 }
 .filter-btn {
@@ -44,17 +47,17 @@ h2 {
 }
 .search-container {
   padding: auto;
-  margin-top: 20px;
+
 }
 .searchBar {
   border: 2px 0px 0px solid black;
-  border-radius: 10px 0px 0px 10px;
+  /* border-radius: 10px 0px 0px 10px; */
   height: 30px;
   width: 400px;
 }
 .submitBtn {
   border-left: 9px solid rgb(45, 45, 45);
-  /* border: none; */
+  border: none;
   border-radius: 0px 10px 10px 0px;
   height: 34px;
   width: 34px;
@@ -66,21 +69,30 @@ h2 {
   flex-wrap: wrap;
 }
 .card {
-  border-radius: 20px;
-  background-color: rgb(215, 198, 198);
+  /* border-radius: 20px; */
+  /* background-color: rgb(215, 198, 198); */
   /* height: 400px; */
   padding: 10px;
   margin: 10px;
   width: 320px;
-  border: 2px solid black;
+  border: 2px solid black;  
+
+  background: rgba( 255, 255, 255, 0.3 );
+  box-shadow: 0 0  12px rgba(233, 233, 237, 0.37);
+  backdrop-filter: blur( 6px );
+  -webkit-backdrop-filter: blur( 6px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 .res-logo-container {
+  
   margin: 5px;
   display: flex;
   justify-content: center;
 }
 .res-logo {
   height: 200px;
+
 }
 .res-info {
   margin: 20px 0 0 10px;
@@ -97,4 +109,24 @@ h2 {
   background-color: aliceblue;
   height: 34px;
   width: 34px;
+}
+.shimmer-container{
+  background-color: #272727;
+  display: flex;
+  flex-wrap: wrap;
+}
+.shimmer-card{
+  height: 400px;
+  width: 320px;
+  background: rgba( 255, 255, 255, 0.3 );
+  box-shadow: 0 0  12px rgba(233, 233, 237, 0.37);
+  backdrop-filter: blur( 6px );
+  -webkit-backdrop-filter: blur( 6px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 )
+}
+.login-btn{
+  padding: 0 20px;
+  cursor: pointer;
+  background-color: aquamarine;
 }

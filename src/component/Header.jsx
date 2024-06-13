@@ -1,6 +1,8 @@
 import { LOGO_CDN } from "../utils/constant";
+import { useState } from "react";
 
 const Header = () => {
+  const  [btnLog, setbtnLog] = useState('Login')
   return (
     <div className='header'>
       <div className="logo-container">
@@ -14,6 +16,14 @@ const Header = () => {
           <li>Reviews</li>
           <li>About</li>
           <li>Contact</li>
+          <button className="login-btn" onClick={
+            ()=>{
+              btnLog === "Login" ?
+              setbtnLog("Logout"):
+              setbtnLog("Login")
+            
+          }}
+          >{btnLog}</button>
         </ul>
         {/* <i class="fa-regular fa-user"></i> */}
       </div>
@@ -21,3 +31,5 @@ const Header = () => {
   )
 }
 export default Header;
+  // const  suhail =  "pagal";
+  // const [] = useState();
