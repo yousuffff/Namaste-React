@@ -3,6 +3,8 @@ import Shimmer from "./Shimmer";
 import resList from "../utils/mockData";
 import { useState, useEffect } from "react";
 
+const url = 'https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.87560&lng=80.91150&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING'      ;
+
 const Body = () => {
   const [listOfRest, setlistOfRest] = useState([]);
   const [filteredResturent , setfilteredResturent ] = useState([])
@@ -14,10 +16,8 @@ const Body = () => {
     fetchData();
   }, []);
 
-  const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.87560&lng=80.91150&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
+  const fetchData = async () => { 
+    const data = await fetch(url);
     const json = await data.json();
     // console.log(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
     // )
@@ -41,7 +41,7 @@ const Body = () => {
   return listOfRest.length == 0 ? (
     <Shimmer />
   ) : (
-    <div className="body">
+    <div className="body">  
       <div className="body-header">
         <div className="search-container">
           <input
@@ -81,7 +81,8 @@ const Body = () => {
               // console.log(resList[0].info.avgRating)
               // console.log(resList)
 
-              setlistOfRest(filteredList);
+              setfilteredResturent(filteredList);
+              console.log(filteredList)
             }}
           >
             Top Rated Resturant
