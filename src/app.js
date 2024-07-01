@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Header from './component/Header';
-import Card from './component/Card';
 import Body from './component/Body';
+import Error from './component/Error';
+import About from './component/About';
+import Contact from './component/Contact';
+import { createBrowserRouter , Outlet, Route, RouterProvider } from 'react-router-dom';
+import Contact from './component/Contact';
 
 // //React.creatElement => reactElement => js Oject => html 
 // const parent = React.createElement('div', { id: 'parent' }, [
@@ -107,11 +111,36 @@ const AppContainer = () => {
   return (
     <div className='main-container'>
       <Header />
-      <Body />
+      <Outlet />
     </div>
   )
 }
 
+const AppRouter = createBrowserRouter([
+  {
+path: '/',
+element: <AppContainer />,
+children: [
+  {
+    path: '/',
+    element: <Body />
+  },
+  {
+    path: '/about',
+    element: <About />
+  },
+    {
+      path: '/contact',
+      element: <Contact />
+      }
+
+],
+errorElement: <Error />
+},
+
+])
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // root.render(header1) // calling react element
-root.render(<AppContainer />) // calling react component
+// root.render(<AppContainer />) // calling react component
+root.render(<RouterProvider router={AppRouter}/>)

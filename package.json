@@ -15,8 +15,9 @@
     "process": "^0.11.10"
   },
   "dependencies": {
+    "browserslist": "last 2 versions",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "browserslist": "last 2 versions"
+    "react-router-dom": "^6.24.0"
   }
 }

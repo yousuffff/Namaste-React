@@ -1,5 +1,6 @@
 import { LOGO_CDN } from "../utils/constant";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const  [btnLog, setbtnLog] = useState('Login')
@@ -11,11 +12,11 @@ const Header = () => {
 
       <div className="navigation-link">
         <ul>
-          <li>Home</li>
-          <li>Menu</li>
-          <li>Reviews</li>
-          <li>About</li>
-          <li>Contact</li>
+          <li><Link to={"/"}>Home</Link></li>
+          <li><Link to={"#"}>Menu</Link></li>
+          <li><Link to={"/"}>Review</Link></li>
+          <li><Link to={"/about"}>About</Link></li>
+          <li><Link to={"/contact"}>Contact Us</Link></li>
           <button className="login-btn" onClick={
             ()=>{
               btnLog === "Login" ?
