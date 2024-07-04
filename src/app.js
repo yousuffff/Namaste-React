@@ -1,14 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import Header from './component/Header';
-import Body from './component/Body';
-import Error from './component/Error';
-import About from './component/About';
-import Contact from './component/Contact';
-import { createBrowserRouter , Outlet, Route, RouterProvider } from 'react-router-dom';
-import Contact from './component/Contact';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import Header from "./component/Header";
+import Body from "./component/Body";
+import Error from "./component/Error";
+import About from "./component/About";
+import ResturantMenu from "./component/ResturantMenu";
+import Contact from "./component/Contact";
+import {
+  createBrowserRouter,
+  Outlet,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
+import Contact from "./component/Contact";
 
-// //React.creatElement => reactElement => js Oject => html 
+// //React.creatElement => reactElement => js Oject => html
 // const parent = React.createElement('div', { id: 'parent' }, [
 //   React.createElement('div', { id: 'child1' }, [
 //     React.createElement('h1', {}, 'hellow world'),
@@ -20,7 +26,7 @@ import Contact from './component/Contact';
 //   ])
 // ]);
 
-// //jsx => React.creatElement => reactElement => js Oject => html 
+// //jsx => React.creatElement => reactElement => js Oject => html
 // //jsx transpiled into js with the help og babel
 // const jsxHeading = <h1>helllo react with JSX</h1>
 
@@ -30,7 +36,7 @@ import Contact from './component/Contact';
 // // 2) functional component
 // // functional component is basically javascript function which return some jsx;
 
-// const Heading = () => <h1>helllo react with JSX</h1> // this is also valid syntax for functional components 
+// const Heading = () => <h1>helllo react with JSX</h1> // this is also valid syntax for functional components
 // // const HeadingComponent = () => {
 // //   return <h2>I'm Functional Component</h2>
 // // }
@@ -48,10 +54,9 @@ import Contact from './component/Contact';
 // // root.render(jsxHeading)
 // root.render(<HeadingComponent />)
 
-
 //Assignment 3//
 
-//          //pure react 
+//          //pure react
 // const header = React.createElement('div', { className: 'title' }, [
 //   React.createElement('h1', {}, `I'm h1 heading`),
 //   React.createElement('h2', {}, `I'm h2 heading`),
@@ -67,7 +72,6 @@ import Contact from './component/Contact';
 //   <h2>I'm h2 heading</h2>
 //   <h3>I'm h3 heading</h3>
 // </div>
-
 
 // //react component(funtional)
 // // and component composition
@@ -95,52 +99,48 @@ import Contact from './component/Contact';
  * -card container
  * --cards
  * footer
- * - coopyright 
+ * - coopyright
  * -info
  * -some other link
- * 
+ *
  */
-
-
-
-
-
-
 
 const AppContainer = () => {
   return (
-    <div className='main-container'>
+    <div className="main-container">
       <Header />
       <Outlet />
     </div>
-  )
-}
+  );
+};
 
 const AppRouter = createBrowserRouter([
   {
-path: '/',
-element: <AppContainer />,
-children: [
-  {
-    path: '/',
-    element: <Body />
-  },
-  {
-    path: '/about',
-    element: <About />
-  },
-    {
-      path: '/contact',
-      element: <Contact />
+    path: "/",
+    element: <AppContainer />,
+    children: [
+      {
+        path: "/",
+        element: <Body />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path:"/resturant/:resId",
+        element: <ResturantMenu />
       }
+    ],
+    errorElement: <Error />,
+  },
+]);
 
-],
-errorElement: <Error />
-},
-
-])
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 // root.render(header1) // calling react element
 // root.render(<AppContainer />) // calling react component
-root.render(<RouterProvider router={AppRouter}/>)
+root.render(<RouterProvider router={AppRouter} />);

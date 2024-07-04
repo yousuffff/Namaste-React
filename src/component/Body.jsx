@@ -2,6 +2,7 @@ import Card from "./Card";
 import Shimmer from "./Shimmer";
 import resList from "../utils/mockData";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const url = 'https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.87560&lng=80.91150&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING'      ;
 
@@ -35,7 +36,7 @@ const Body = () => {
   // if(listOfRest.length == 0){
   //   return <Shimmer />;
   // }
-  // console.log(listOfRest[1].info.cuisines);
+  console.log(listOfRest);
 
   //  console.log('rendering')
   return listOfRest.length == 0 ? (
@@ -91,7 +92,7 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filteredResturent.map((restaurant) => (
-          <Card key={restaurant.info.id} resdata={restaurant.info} />
+          <Link key={restaurant.info.id} to={"/resturant/" + restaurant.info.id}><Card  resdata={restaurant.info} /></Link>
         ))}
       </div>
     </div>
