@@ -1,10 +1,8 @@
 import Card from "./Card";
 import Shimmer from "./Shimmer";
-import resList from "../utils/mockData";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
-const url = 'https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.87560&lng=80.91150&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING'      ;
+import { MainAPI } from "../utils/constant";
 
 const Body = () => {
   const [listOfRest, setlistOfRest] = useState([]);
@@ -13,12 +11,12 @@ const Body = () => {
 
   const [searchText, setsearchText] = useState("");
   useEffect(() => {
-    console.log(`useEffect hook worked`);
+    // console.log(`useEffect hook worked`);
     fetchData();
   }, []);
 
   const fetchData = async () => { 
-    const data = await fetch(url);
+    const data = await fetch(MainAPI);
     const json = await data.json();
     // console.log(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
     // )
@@ -36,7 +34,7 @@ const Body = () => {
   // if(listOfRest.length == 0){
   //   return <Shimmer />;
   // }
-  console.log(listOfRest);
+  // console.log(listOfRest);
 
   //  console.log('rendering')
   return listOfRest.length == 0 ? (

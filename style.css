@@ -32,6 +32,11 @@ h2 {
   padding: 15px;
   list-style: none;
 }
+.navigation-link > ul > li:hover{
+  cursor: pointer;
+  transform: translateY(-10px);
+  transition: 0.3s ease-in-out;
+}
 .body {
   background-color: #272727;
 }
@@ -129,4 +134,19 @@ h2 {
   padding: 0 20px;
   cursor: pointer;
   background-color: aquamarine;
+}
+.user-card{
+  padding: 10px;
+  border: 2px solid black;
+  width: 20rem;
+  background-color: beige;
+}
+.avatar{
+  margin: 0px 50px;
+  height: 200px;
+  border-radius: 50%  ;
+}
+a{
+  text-decoration: none;
+  color: #272727;
 }

@@ -1,9 +1,9 @@
-import React from "react";
+import React, {lazy , Suspense} from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./component/Header";
 import Body from "./component/Body";
 import Error from "./component/Error";
-import About from "./component/About";
+// import About from "./component/About";
 import ResturantMenu from "./component/ResturantMenu";
 import Contact from "./component/Contact";
 import {
@@ -13,6 +13,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Contact from "./component/Contact";
+import Shimmer from "./component/Shimmer";
 
 // //React.creatElement => reactElement => js Oject => html
 // const parent = React.createElement('div', { id: 'parent' }, [
@@ -105,6 +106,7 @@ import Contact from "./component/Contact";
  *
  */
 
+const About = lazy(()=>import( "./component/About"))
 const AppContainer = () => {
   return (
     <div className="main-container">
@@ -125,7 +127,7 @@ const AppRouter = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <About />,
+        element:<Suspense fallback={<Shimmer />}><About /></Suspense> ,
       },
       {
         path: "/contact",
