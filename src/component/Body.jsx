@@ -1,21 +1,25 @@
-import Card from "./Card";
+import Card, { withPromoted } from "./Card";
 import Shimmer from "./Shimmer";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useContext } from "react";
 import { Link } from "react-router-dom";
 import { MainAPI } from "../utils/constant";
+import UserContext from "../utils/UserContext";
+
 
 const Body = () => {
   const [listOfRest, setlistOfRest] = useState([]);
-  const [filteredResturent , setfilteredResturent ] = useState([])
-
+  const [filteredResturent, setfilteredResturent] = useState([]);
+  const {setUserName, loggedInInfo}= useContext(UserContext);
 
   const [searchText, setsearchText] = useState("");
+
+  const CardWithPromoted = withPromoted(Card)
   useEffect(() => {
     // console.log(`useEffect hook worked`);
     fetchData();
   }, []);
 
-  const fetchData = async () => { 
+  const fetchData = async () => {
     const data = await fetch(MainAPI);
     const json = await data.json();
     // console.log(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants
@@ -27,8 +31,9 @@ const Body = () => {
       json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
-  // console.log("re- rendering")
+  // console.log("re- rendering" , listOfRest)
   
+
   //conditional rendering
 
   // if(listOfRest.length == 0){
@@ -40,8 +45,8 @@ const Body = () => {
   return listOfRest.length == 0 ? (
     <Shimmer />
   ) : (
-    <div className="body">  
-      <div className="body-header">
+    <div className="top-20 absolute">
+      <div className="flex gap-8 mx-32 justify-around my-10">
         <div className="search-container">
           <input
             type="text"
@@ -57,10 +62,10 @@ const Body = () => {
             type="submit"
             className="submitBtn"
             onClick={() => {
-              const filteredRest = listOfRest.filter((res) => 
+              const filteredRest = listOfRest.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
-              )
-              setfilteredResturent(filteredRest)
+              );
+              setfilteredResturent(filteredRest);
             }}
           >
             <i className="fa-solid fa-magnifying-glass"></i>
@@ -81,18 +86,30 @@ const Body = () => {
               // console.log(resList)
 
               setfilteredResturent(filteredList);
-              console.log(filteredList)
+              console.log(filteredList);
             }}
           >
             Top Rated Resturant
           </button>
         </div>
+        <div>
+        <label htmlFor="">Username</label>
+          <input type="text" className="border-black border-2 rounded-md p-2" value={loggedInInfo} onChange={(e)=>setUserName(e.target.value)}/>
+        </div>
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap gap-8 mx-32 justify-around mb-4">
         {filteredResturent.map((restaurant) => (
-          <Link key={restaurant.info.id} to={"/resturant/" + restaurant.info.id}><Card  resdata={restaurant.info} /></Link>
+          <Link
+            key={restaurant.info.id}
+            to={"/resturant/" + restaurant.info.id}
+          >
+          {restaurant.info.isOpen ? <CardWithPromoted resdata={restaurant.info}/> : <Card resdata={restaurant.info} />
+          
+          }
+            
+          </Link>
         ))}
-      </div>
+    </div>
     </div>
   );
 };

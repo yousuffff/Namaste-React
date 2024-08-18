@@ -37,7 +37,7 @@ class Userclass extends React.Component {
       }>click me</button> */}
       <img src={this.state.userInfo.
 avatar_url
-} alt="" className="avatar"/>
+} alt="" className="rounded-full border border-slate-400 p-1"/>
         <h2>Name: {name}</h2>
         <h3>Location: {location}</h3>
         <h4>
