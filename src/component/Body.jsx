@@ -1,19 +1,18 @@
 import Card, { withPromoted } from "./Card";
 import Shimmer from "./Shimmer";
-import { useState, useEffect,useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { MainAPI } from "../utils/constant";
 import UserContext from "../utils/UserContext";
 
-
 const Body = () => {
   const [listOfRest, setlistOfRest] = useState([]);
   const [filteredResturent, setfilteredResturent] = useState([]);
-  const {setUserName, loggedInInfo}= useContext(UserContext);
+  const { setUserName, loggedInInfo } = useContext(UserContext);
 
   const [searchText, setsearchText] = useState("");
 
-  const CardWithPromoted = withPromoted(Card)
+  const CardWithPromoted = withPromoted(Card);
   useEffect(() => {
     // console.log(`useEffect hook worked`);
     fetchData();
@@ -32,7 +31,6 @@ const Body = () => {
     );
   };
   // console.log("re- rendering" , listOfRest)
-  
 
   //conditional rendering
 
@@ -57,8 +55,10 @@ const Body = () => {
             onChange={(e) => {
               setsearchText(e.target.value);
             }}
+            data-testid = "searchInput"
           />
           <button
+          data-testid="search"
             type="submit"
             className="submitBtn"
             onClick={() => {
@@ -93,8 +93,13 @@ const Body = () => {
           </button>
         </div>
         <div>
-        <label htmlFor="">Username</label>
-          <input type="text" className="border-black border-2 rounded-md p-2" value={loggedInInfo} onChange={(e)=>setUserName(e.target.value)}/>
+          <label htmlFor="">Username</label>
+          <input
+            type="text"
+            className="border-black border-2 rounded-md p-2"
+            value={loggedInInfo}
+            onChange={(e) => setUserName(e.target.value)}
+          />
         </div>
       </div>
       <div className="flex flex-wrap gap-8 mx-32 justify-around mb-4">
@@ -103,13 +108,14 @@ const Body = () => {
             key={restaurant.info.id}
             to={"/resturant/" + restaurant.info.id}
           >
-          {restaurant.info.isOpen ? <CardWithPromoted resdata={restaurant.info}/> : <Card resdata={restaurant.info} />
-          
-          }
-            
+            {restaurant.info.isOpen ? (
+              <CardWithPromoted resdata={restaurant.info} />
+            ) : (
+              <Card resdata={restaurant.info} />
+            )}
           </Link>
         ))}
-    </div>
+      </div>
     </div>
   );
 };

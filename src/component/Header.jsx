@@ -9,10 +9,10 @@ const Header = () => {
   const  [btnLog, setbtnLog] = useState('Login')
   const online = useOnlineStatus();
   const {loggedInInfo} = useContext(UserContext)
-  console.log(loggedInInfo)
+  // console.log(loggedInInfo)
 
  const cartItem = useSelector((store) => store.cart.items)
- console.log(cartItem)
+//  console.log(cartItem)
   return (
     <div className='flex justify-between gap-10 bg-pink-300 shadow-lg h-20 w-full fixed z-50 px-24' >
       <div className="">

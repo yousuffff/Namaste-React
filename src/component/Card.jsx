@@ -8,8 +8,9 @@ const Card = (props) => {
     costForTwo,
     avgRating,
     sla } = props?.resdata;
+    // console.log(props.resdata)
   return (
-    <div className="w-72 bg-gray-200 border-solid border-black border-2 rounded-xl hover:cursor-pointer hover:bg-gray-300 transition-transform:ease-in 100ms top=" >
+    <div className="w-72 bg-gray-200 border-solid border-black border-2 rounded-xl hover:cursor-pointer hover:bg-gray-300 transition-transform:ease-in 100ms top=" data-testid = "resCard" >
       <div className='  '>
         <img src={CARDPIC_CDN + cloudinaryImageId} alt="" className= "w-auto object-cover p-1 rounded-xl" />
       </div>
